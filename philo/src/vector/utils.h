@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 10:55:22 by nseon             #+#    #+#             */
-/*   Updated: 2025/04/09 13:37:03 by nseon            ###   ########.fr       */
+/*   Created: 2025/04/15 11:40:05 by nseon             #+#    #+#             */
+/*   Updated: 2025/04/15 13:20:58 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-int	main(int argc, char **argv)
-{
-	int i;
+# include <stdlib.h>
 
-	i = TAGRANDMERE;
-}
+void	*ft_memmove(void *dest, const void *src, size_t n);
+void	*ft_realloc(void *tab, int size, int resize);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+
+#endif

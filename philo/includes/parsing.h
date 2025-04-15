@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 10:55:22 by nseon             #+#    #+#             */
-/*   Updated: 2025/04/09 13:37:03 by nseon            ###   ########.fr       */
+/*   Created: 2025/04/09 13:35:33 by nseon             #+#    #+#             */
+/*   Updated: 2025/04/09 13:37:07 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#ifndef PARSING_H
+# define PARSIN_H
 
-int	main(int argc, char **argv)
-{
-	int i;
+#define TAGRANDMERE -1
 
-	i = TAGRANDMERE;
-}
+#endif
