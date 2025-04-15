@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:26:01 by nseon             #+#    #+#             */
-/*   Updated: 2025/04/15 11:41:36 by nseon            ###   ########.fr       */
+/*   Updated: 2025/04/15 16:12:27 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@
 t_vct	*realloc_vct(t_vct *vct)
 {
 	t_vct	*resized_vct;
+	int		old_capacity;
 
-	resized_vct = ft_realloc(vct, vct->capacity * vct->elem_size,
-			2 * vct->capacity * vct->elem_size);
+	old_capacity = vct->capacity;
+	resized_vct = ft_realloc(vct, vct->nb_elem * vct->elem_size + sizeof(t_vct),
+			(2 * vct->capacity * vct->elem_size) + sizeof(t_vct));
 	if (!resized_vct)
 		return (NULL);
-	resized_vct->capacity = 2 * vct->capacity;
+	resized_vct->capacity = 2 * old_capacity;
 	return (resized_vct);
 }
 

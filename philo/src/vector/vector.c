@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 13:05:02 by nseon             #+#    #+#             */
-/*   Updated: 2025/04/10 18:28:02 by nseon            ###   ########.fr       */
+/*   Updated: 2025/04/15 15:23:47 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,5 @@ t_vct	*get_vct_struct(void *data)
 */
 void	free_vct(void *data)
 {
-	free(get_vector_struct(data));
+	free(get_vct_struct(data));
 }

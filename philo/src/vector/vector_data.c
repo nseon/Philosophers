@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 09:28:22 by nseon             #+#    #+#             */
-/*   Updated: 2025/04/15 15:03:13 by nseon            ###   ########.fr       */
+/*   Updated: 2025/04/15 16:38:28 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /*!
  * Return a pointeur to the next free bite
  * @param dataptr A pointer to the data
- * @return A pointer to the free bite
+ * @return A pointer to the free bite or NULL on failure
  */
 void	*get_last_dest(void *dataptr)
 {
@@ -32,8 +32,8 @@ void	*get_last_dest(void *dataptr)
 		if (!vct_struct)
 			return (NULL);
 		*data = vct_struct->data;
-		return (&vct_struct[vct_struct->elem_size * vct_struct->nb_elem++]);
 	}
+	return (&vct_struct->data[vct_struct->elem_size * vct_struct->nb_elem++]);
 }
 
 /*!
@@ -60,7 +60,7 @@ int	vct_add(void *dataptr, void *value)
 			get_vct_struct(*data)->del(value);
 		return (-1);
 	}
-	ft_memcpy(dest, value, get_vct_struct(*data)->nb_elem);
+	ft_memcpy(dest, value, get_vct_struct(*data)->elem_size);
 	return (0);
 }
 
@@ -68,7 +68,7 @@ int	vct_add(void *dataptr, void *value)
  * Return a pointeur to the insert dest
  * @param dataptr A pointer to the data
  * @param index Position of the element
- * @return A pointer to the element
+ * @return A pointer to the element or NULL on failure
  */
 void	*get_insert_dest(void *dataptr, int index)
 {
@@ -85,7 +85,7 @@ void	*get_insert_dest(void *dataptr, int index)
 		*data = vct_struct->data;
 	}
 	ft_memmove(&vct_struct->data[(index + 1) * vct_struct->elem_size],
-		&vct_struct[index * vct_struct->elem_size],
+		&vct_struct->data[index * vct_struct->elem_size],
 		(vct_struct->nb_elem - index) * vct_struct->elem_size);
 	vct_struct->nb_elem += 1;
 	return (&vct_struct->data[vct_struct->elem_size * index]);

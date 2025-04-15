@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 13:43:42 by nseon             #+#    #+#             */
-/*   Updated: 2025/04/15 13:38:15 by nseon            ###   ########.fr       */
+/*   Updated: 2025/04/15 15:17:33 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ int		vct_size(void *data);
 void	vct_delete_next(void *data, int index, int nb);
 void	vct_delete_one(void *data, int index);
 void	vct_destroy(void *data);
+int		vct_insert(void *dataptr, void *value, int index);
+int		vct_add(void *dataptr, void *value);
 
 #endif

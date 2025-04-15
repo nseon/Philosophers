@@ -6,13 +6,11 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 13:35:33 by nseon             #+#    #+#             */
-/*   Updated: 2025/04/09 13:37:07 by nseon            ###   ########.fr       */
+/*   Updated: 2025/04/15 15:13:49 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
-# define PARSIN_H
-
-#define TAGRANDMERE -1
+# define PARSING_H
 
 #endif

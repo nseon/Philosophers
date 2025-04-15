@@ -6,15 +6,17 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:55:22 by nseon             #+#    #+#             */
-/*   Updated: 2025/04/09 13:37:03 by nseon            ###   ########.fr       */
+/*   Updated: 2025/04/15 16:47:15 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+#include "vector.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-int	main(int argc, char **argv)
+int	main()
 {
-	int i;
-
-	i = TAGRANDMERE;
+	
+	return (0);
 }

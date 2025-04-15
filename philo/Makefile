@@ -6,7 +6,7 @@
 #    By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 10:00:18 by nseon             #+#    #+#              #
-#    Updated: 2025/04/08 10:55:02 by nseon            ###   ########.fr        #
+#    Updated: 2025/04/15 15:23:14 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,19 @@ SRC			=	philo.c\
 
 SRC			+=	$(addprefix $(DRW_DIR), $(DRW_SRC))
 
+# --------------VECTOR--------------- #
+
+SRC			+=	$(addprefix $(VCT_DIR), $(VCT_SRC))
+
+VCT_DIR		=	vector/
+VCT_SRC		=	vector.c\
+				vct_infos.c\
+				ft_memcpy.c\
+				ft_realloc.c\
+				ft_memmove.c\
+				vector_data.c\
+				vector_clean.c\
+				vector_allocs.c\
 
 # -------------INCLUDES-------------- #
 
@@ -63,7 +76,7 @@ $(LIB_PATH): force
 
 .PHONY: norminette
 norminette:
-	norminette $(INC_DIR) $(SRC_DIR) lib/Libft
+	norminette $(INC_DIR) $(SRC_DIR)
 
 .PHONY: clean
 clean:
