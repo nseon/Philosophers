@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 16:24:27 by nseon             #+#    #+#             */
-/*   Updated: 2025/04/15 12:55:31 by nseon            ###   ########.fr       */
+/*   Updated: 2025/04/17 13:19:16 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,5 @@ void	vct_delete_one(void *data, int index)
 void	vct_destroy(void *data)
 {
 	vct_delete_next(data, 0, get_vct_struct(data)->nb_elem);
-	free(data);
+	free(get_vct_struct(data));
 }

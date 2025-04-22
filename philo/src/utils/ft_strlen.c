@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: nseon <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 13:35:33 by nseon             #+#    #+#             */
-/*   Updated: 2025/04/17 10:31:41 by nseon            ###   ########.fr       */
+/*   Created: 2024/11/05 13:07:01 by nseon             #+#    #+#             */
+/*   Updated: 2024/11/05 13:27:39 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#include <stddef.h>
 
-# include <pthread.h>
-
-typedef struct s_philo
+size_t	ft_strlen(const char *s)
 {
-	pthread_mutex_t mutexi;
-	int i;
-}	t_philo;
+	size_t	n;
 
-
-int	verif_args(int argc, char **args);
-
-#endif
+	n = 0;
+	while (s[n] != '\0')
+		n++;
+	return (n);
+}

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vct_infos.c                                        :+:      :+:    :+:   */
+/*   vector_infos.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 09:38:59 by nseon             #+#    #+#             */
-/*   Updated: 2025/04/10 10:50:22 by nseon            ###   ########.fr       */
+/*   Updated: 2025/04/16 09:57:19 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  */
 int	vct_size(void *data)
 {
-	return(get_vct_struct(data)->nb_elem);
+	return (get_vct_struct(data)->nb_elem);
 }
 
 /*!
@@ -27,7 +27,7 @@ int	vct_size(void *data)
  */
 int	vct_capacity(void *data)
 {
-	return(get_vct_struct(data)->capacity);
+	return (get_vct_struct(data)->capacity);
 }
 
 /*!
@@ -38,5 +38,3 @@ int	place_remain(t_vct *vct)
 {
 	return (vct->capacity - vct->nb_elem);
 }
-
-

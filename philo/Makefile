@@ -6,7 +6,7 @@
 #    By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 10:00:18 by nseon             #+#    #+#              #
-#    Updated: 2025/04/15 15:23:14 by nseon            ###   ########.fr        #
+#    Updated: 2025/04/17 11:34:49 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,13 +36,29 @@ SRC			+=	$(addprefix $(VCT_DIR), $(VCT_SRC))
 
 VCT_DIR		=	vector/
 VCT_SRC		=	vector.c\
-				vct_infos.c\
-				ft_memcpy.c\
-				ft_realloc.c\
-				ft_memmove.c\
 				vector_data.c\
+				vector_infos.c\
 				vector_clean.c\
 				vector_allocs.c\
+
+# --------------UTILS---------------- #
+
+SRC			+=	$(addprefix $(TLS_DIR), $(TLS_SRC))
+
+TLS_DIR		=	utils/
+TLS_SRC		=	ft_atoi.c\
+				ft_strlen.c\
+				ft_memcpy.c\
+				ft_strdup.c\
+				ft_realloc.c\
+				ft_memmove.c\
+
+# -------------PARSING--------------- #
+
+SRC			+=	$(addprefix $(PRS_DIR), $(PRS_SRC))
+
+PRS_DIR		=	parsing/
+PRS_SRC		=	parsing.c\
 
 # -------------INCLUDES-------------- #
 
@@ -53,11 +69,11 @@ INCLUDES	=	$(INC_DIR)\
 # --------------CONFIGS-------------- #
 
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror -Ofast
+CFLAGS		=	-Wall -Wextra -Werror
 CPPFLAGS	=	-MMD -MP $(addprefix -I, $(INCLUDES))
 
 LDFLAGS		+=	$(addprefix -L, $(dir $(LIB_PATH)))
-LDLIBS		+=	$(addprefix -l, $(LIB)) -lXext -lX11 -lm
+LDLIBS		+=	$(addprefix -l, $(LIB))
 
 # --------------TARGETS-------------- #
 
@@ -77,6 +93,10 @@ $(LIB_PATH): force
 .PHONY: norminette
 norminette:
 	norminette $(INC_DIR) $(SRC_DIR)
+
+.PHONY: helgrind
+helgrind: all
+	@valgrind --tool=helgrind --history-level=approx ./philo 4 4 4 4
 
 .PHONY: clean
 clean:
