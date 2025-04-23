@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   create_threads.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 13:35:33 by nseon             #+#    #+#             */
-/*   Updated: 2025/04/23 16:50:15 by nseon            ###   ########.fr       */
+/*   Created: 2025/04/23 11:25:18 by nseon             #+#    #+#             */
+/*   Updated: 2025/04/23 17:40:20 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#include <pthread.h>
+#include "philo.h"
+#include "vector.h"
 
-int		verif_args(int argc, char **args);
-void	fill_args(int *args, int argc, char **argv);
+int	create_n_philos(int number, void*(*start_routine)(void*))
+{
+	int			i;
+	pthread_t	id;
+	pthread_t	*threadids;
 
-#endif
+	i = -1;
+	threadids = malloc(number * sizeof(int));
+	if (!threadids)
+		return (-1);
+	while (++i < number)
+	{
+		if (pthread_create(&id, NULL, start_routine, NULL) != 0)
+			break;
+	}
+	return (0);
+}

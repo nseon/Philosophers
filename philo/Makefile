@@ -6,7 +6,7 @@
 #    By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 10:00:18 by nseon             #+#    #+#              #
-#    Updated: 2025/04/17 11:34:49 by nseon            ###   ########.fr        #
+#    Updated: 2025/04/23 16:54:52 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,12 @@ DEP			=	$(patsubst %.c, $(MAKE_DIR)%.d, $(SRC))
 
 SRC			=	philo.c\
 
-# ---------------DRAW---------------- #
+# --------------THREADS-------------- #
 
-SRC			+=	$(addprefix $(DRW_DIR), $(DRW_SRC))
+SRC			+=	$(addprefix $(TRD_DIR), $(TRD_SRC))
+
+TRD_DIR		=	threads/
+TRD_SRC		=	create_threads.c\
 
 # --------------VECTOR--------------- #
 
@@ -58,7 +61,8 @@ TLS_SRC		=	ft_atoi.c\
 SRC			+=	$(addprefix $(PRS_DIR), $(PRS_SRC))
 
 PRS_DIR		=	parsing/
-PRS_SRC		=	parsing.c\
+PRS_SRC		=	check_args.c\
+				get_args.c\
 
 # -------------INCLUDES-------------- #
 

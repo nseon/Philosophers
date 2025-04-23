@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 13:35:33 by nseon             #+#    #+#             */
-/*   Updated: 2025/04/23 16:50:15 by nseon            ###   ########.fr       */
+/*   Created: 2025/04/23 16:15:32 by nseon             #+#    #+#             */
+/*   Updated: 2025/04/23 17:03:09 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#include "utils.h"
 
-int		verif_args(int argc, char **args);
-void	fill_args(int *args, int argc, char **argv);
+void fill_args(int *args, int argc, char **argv)
+{
+	int	i;
 
-#endif
+	i = 0;
+	while (++i < argc)
+		args[i - 1] = ft_atoi(argv[i]);
+}

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:47:22 by nseon             #+#    #+#             */
-/*   Updated: 2025/04/16 13:22:24 by nseon            ###   ########.fr       */
+/*   Updated: 2025/04/23 16:48:33 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ int	num_is_good(int nb)
 	return (1);
 }
 
-int	print_error(int i, char *arg)
+char *choose_elem(int i)
 {
-	char	*use;
-	char	*error;
+	char *use;
 
 	if (i == 1)
 		use = ft_strdup("[nb_of_philo]");
@@ -37,8 +36,21 @@ int	print_error(int i, char *arg)
 	if (i == 5)
 		use = ft_strdup("[nb_of_times_each_philo_must_eat]");
 	if (!use)
+		return (NULL);
+	return (use);
+}
+
+int	print_error(int i, char *arg)
+{
+	char	*use;
+	char	*error;
+
+	use = choose_elem(i);
+	if (!use)
 		return (-1);
-	if (arg[0] == '-')
+	if (ft_atoi(arg) == -2)
+		error = ft_strdup("is incorrectly formatted");
+	else if (arg[0] == '-')
 		error = ft_strdup("is a negative number");
 	else
 		error = ft_strdup("is bigger than an int");
