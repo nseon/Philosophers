@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+         #
+#    By: nseon <nseon@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 10:00:18 by nseon             #+#    #+#              #
-#    Updated: 2025/04/23 16:54:52 by nseon            ###   ########.fr        #
+#    Updated: 2025/05/12 14:02:35 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,23 +26,32 @@ DEP			=	$(patsubst %.c, $(MAKE_DIR)%.d, $(SRC))
 
 SRC			=	philo.c\
 
+# ---------------TIME---------------- #
+
+SRC			+=	$(addprefix $(TIM_DIR), $(TIM_SRC))
+
+TIM_DIR		=	time/
+TIM_SRC		=	get_time.c\
+
 # --------------THREADS-------------- #
 
 SRC			+=	$(addprefix $(TRD_DIR), $(TRD_SRC))
 
 TRD_DIR		=	threads/
-TRD_SRC		=	create_threads.c\
+TRD_SRC		=	threads.c\
+				routine.c\
 
-# --------------VECTOR--------------- #
+# --------------ACTIONS-------------- #
 
-SRC			+=	$(addprefix $(VCT_DIR), $(VCT_SRC))
+SRC			+=	$(addprefix $(ACT_DIR), $(ACT_SRC))
 
-VCT_DIR		=	vector/
-VCT_SRC		=	vector.c\
-				vector_data.c\
-				vector_infos.c\
-				vector_clean.c\
-				vector_allocs.c\
+ACT_DIR		=	actions/
+ACT_SRC		=	forks.c\
+				eat.c\
+				sleep.c\
+				dead.c\
+				think.c\
+				print.c\
 
 # --------------UTILS---------------- #
 
@@ -50,11 +59,8 @@ SRC			+=	$(addprefix $(TLS_DIR), $(TLS_SRC))
 
 TLS_DIR		=	utils/
 TLS_SRC		=	ft_atoi.c\
-				ft_strlen.c\
-				ft_memcpy.c\
 				ft_strdup.c\
-				ft_realloc.c\
-				ft_memmove.c\
+				ft_strlen.c\
 
 # -------------PARSING--------------- #
 
@@ -62,7 +68,7 @@ SRC			+=	$(addprefix $(PRS_DIR), $(PRS_SRC))
 
 PRS_DIR		=	parsing/
 PRS_SRC		=	check_args.c\
-				get_args.c\
+				infos.c\
 
 # -------------INCLUDES-------------- #
 

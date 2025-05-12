@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_args.c                                         :+:      :+:    :+:   */
+/*   get_time.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 16:15:32 by nseon             #+#    #+#             */
-/*   Updated: 2025/04/23 17:03:09 by nseon            ###   ########.fr       */
+/*   Created: 2025/05/05 12:58:35 by nseon             #+#    #+#             */
+/*   Updated: 2025/05/12 19:02:54 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include <sys/time.h>
+#include "parsing.h"
 
-void fill_args(int *args, int argc, char **argv)
+long int	get_time(long int minus)
 {
-	int	i;
+	struct timeval	time;
 
-	i = 0;
-	while (++i < argc)
-		args[i - 1] = ft_atoi(argv[i]);
+	gettimeofday(&time, 0);
+	return ((time.tv_sec * 1000 + time.tv_usec / 1000) - minus);
 }

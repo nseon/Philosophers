@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:47:22 by nseon             #+#    #+#             */
-/*   Updated: 2025/04/23 16:48:33 by nseon            ###   ########.fr       */
+/*   Updated: 2025/04/30 16:05:05 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ int	num_is_good(int nb)
 	return (1);
 }
 
-char *choose_elem(int i)
+char	*choose_elem(int i)
 {
-	char *use;
+	char	*use;
 
 	if (i == 1)
-		use = ft_strdup("[nb_of_philo]");
+		use = ft_strdup("nb_of_philo");
 	if (i == 2)
-		use = ft_strdup("[time_to_die]");
+		use = ft_strdup("time_to_die");
 	if (i == 3)
-		use = ft_strdup("[time_to_eat]");
+		use = ft_strdup("time_to_eat");
 	if (i == 4)
-		use = ft_strdup("[time_to_sleep]");
+		use = ft_strdup("time_to_sleep");
 	if (i == 5)
 		use = ft_strdup("[nb_of_times_each_philo_must_eat]");
 	if (!use)
@@ -71,8 +71,8 @@ int	verif_args(int argc, char **args)
 	error = 0;
 	if (argc != 5 && argc != 6)
 	{
-		printf("Usage: ./philo [nb_of_philo] [time_to_die] [time_to_eat]"
-			" [time_to_sleep] [nb_of_times_each_philo_must_eat(optionnal)]\n");
+		printf("Usage: ./philo  nb_of_philo  time_to_die  time_to_eat"
+			"  time_to_sleep  [nb_of_times_each_philo_must_eat]\n");
 		return (-1);
 	}
 	while (args[++i])

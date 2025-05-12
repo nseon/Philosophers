@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   think.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 13:20:39 by nseon             #+#    #+#             */
-/*   Updated: 2025/04/15 13:20:40 by nseon            ###   ########.fr       */
+/*   Created: 2025/05/07 13:52:16 by nseon             #+#    #+#             */
+/*   Updated: 2025/05/12 16:07:26 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <string.h>
+#include "parsing.h"
+#include <pthread.h>
+#include <stdio.h>
+#include "actions.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	think(t_args infos)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-		i++;
-	}
-	return (dest);
+	print(infos, "%ld %d is thinking\n");
 }
