@@ -6,7 +6,7 @@
 #    By: nseon <nseon@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 10:00:18 by nseon             #+#    #+#              #
-#    Updated: 2025/05/12 14:02:35 by nseon            ###   ########.fr        #
+#    Updated: 2025/05/13 10:50:02 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,7 +106,7 @@ norminette:
 
 .PHONY: helgrind
 helgrind: all
-	@valgrind --tool=helgrind --history-level=approx ./philo 4 4 4 4
+	@valgrind --tool=helgrind --history-level=approx -s ./philo 10 4000 50 50
 
 .PHONY: clean
 clean:
