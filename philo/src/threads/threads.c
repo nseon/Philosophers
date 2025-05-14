@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 11:25:18 by nseon             #+#    #+#             */
-/*   Updated: 2025/05/12 19:05:12 by nseon            ###   ########.fr       */
+/*   Updated: 2025/05/14 13:22:38 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	create_ph(int number, void*(*routine)(void*), t_args args)
 	}
 	*args.time_minus = get_time(0);
 	pthread_mutex_unlock(args.start);
-	if (wait_philos(threadids, number) == -1)
+	if (wait_philos(threadids, i) == -1)
 		return (-1);
 	free(threadids);
 	return (0);

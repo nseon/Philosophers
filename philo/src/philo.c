@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:55:22 by nseon             #+#    #+#             */
-/*   Updated: 2025/05/12 13:52:12 by nseon            ###   ########.fr       */
+/*   Updated: 2025/05/13 13:52:20 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ int	main(int argc, char **argv)
 	if (set_fork(&args.forks, args.philo_nb) == -1)
 		return (1);
 	if (create_ph(args.philo_nb, routine, args) == -1)
+	{
+		free(args.forks);
 		return (1);
+	}
 	free(args.forks);
 	return (0);
 }

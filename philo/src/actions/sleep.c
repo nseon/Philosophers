@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 14:51:03 by nseon             #+#    #+#             */
-/*   Updated: 2025/05/13 10:33:50 by nseon            ###   ########.fr       */
+/*   Updated: 2025/05/14 12:18:49 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@
 
 int	philo_sleep(t_args infos, int sleep_time)
 {
-	long int	awake;
+	const long int	awakening = get_time(*infos.time_minus) + sleep_time;
 
-	awake = get_time(*infos.time_minus) + sleep_time;
-	while (get_time(*infos.time_minus) <= awake)
+	while (get_time(*infos.time_minus) < awakening)
 	{
-		usleep(1000);
+		usleep(200);
 		if (get_time(*infos.time_minus) > infos.will_die)
 			return (1);
 	}
@@ -31,7 +30,7 @@ int	philo_sleep(t_args infos, int sleep_time)
 
 int	is_sleeping(t_args *infos)
 {
-	print(*infos, "%ld %d is sleeping\n");
+	print(*infos, "%ldms %d is sleeping\n");
 	if (philo_sleep(*infos, (*infos).tt_sleep))
 	{
 		is_dead(*infos);

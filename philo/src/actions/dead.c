@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:45:20 by nseon             #+#    #+#             */
-/*   Updated: 2025/05/12 19:07:07 by nseon            ###   ########.fr       */
+/*   Updated: 2025/05/13 11:29:58 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	is_dead(t_args infos)
 		infos.end->status = 1;
 		pthread_mutex_unlock(&infos.end->mutex);
 		pthread_mutex_lock(infos.print);
-		printf("%ld %d died\n", get_time(*infos.time_minus), infos.number);
+		printf("%ldms %d died\n", get_time(*infos.time_minus), infos.number);
 		pthread_mutex_unlock(infos.print);
 	}
 	else

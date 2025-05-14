@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:47:22 by nseon             #+#    #+#             */
-/*   Updated: 2025/04/30 16:05:05 by nseon            ###   ########.fr       */
+/*   Updated: 2025/05/14 13:17:44 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ char	*choose_elem(int i)
 
 	if (i == 1)
 		use = ft_strdup("nb_of_philo");
-	if (i == 2)
+	else if (i == 2)
 		use = ft_strdup("time_to_die");
-	if (i == 3)
+	else if (i == 3)
 		use = ft_strdup("time_to_eat");
-	if (i == 4)
+	else if (i == 4)
 		use = ft_strdup("time_to_sleep");
-	if (i == 5)
+	else if (i == 5)
 		use = ft_strdup("[nb_of_times_each_philo_must_eat]");
-	if (!use)
-		return (NULL);
+	else
+		use = NULL;
 	return (use);
 }
 

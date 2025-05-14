@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 16:15:32 by nseon             #+#    #+#             */
-/*   Updated: 2025/05/12 16:28:38 by nseon            ###   ########.fr       */
+/*   Updated: 2025/05/13 15:51:35 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	fill_args(int *args, int argc, char **argv)
 	i = -1;
 	while (++i < argc)
 		*(args + i) = ft_atoi(argv[i]);
+	if (argc == 4)
+		*(args + i) = -1;
 }
 
 int	duplicate_args(t_args **newargs, t_args args)

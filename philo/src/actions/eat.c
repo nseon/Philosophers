@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 14:50:41 by nseon             #+#    #+#             */
-/*   Updated: 2025/05/13 10:35:27 by nseon            ###   ########.fr       */
+/*   Updated: 2025/05/14 12:53:30 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,18 @@ int	is_eating(t_args *infos)
 	plus_one = (*infos).number;
 	if ((*infos).number == (*infos).philo_nb)
 		plus_one = 0;
-	if (!((*infos).number % 2 == 1 && get_time(*infos->time_minus)
-			< (*infos).tt_eat))
+	if (take_fork(*infos))
 	{
-		if (take_fork(*infos))
-		{
-			print(*infos, "%ld %d is eating\n");
-			if (philo_sleep(*infos, (*infos).tt_eat))
-				is_dead(*infos);
-			(*infos).forks[(*infos).number - 1].status = 0;
-			(*infos).forks[plus_one].status = 0;
-			(*infos).will_die = get_time((*infos->time_minus))
-				+ (*infos).tt_die;
-			return (1);
-		}
+		print(*infos, "%ldms %d is eating\n");
+		if (philo_sleep(*infos, (*infos).tt_eat))
+			is_dead(*infos);
+		(*infos).forks[(*infos).number - 1].status = 0;
+		(*infos).forks[plus_one].status = 0;
+		(*infos).will_die = get_time((*infos->time_minus))
+			+ (*infos).tt_die;
+		if ((*infos).eat_nb > 0)
+			(*infos).eat_nb--;
+		return (1);
 	}
 	return (0);
 }
