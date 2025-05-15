@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 14:50:41 by nseon             #+#    #+#             */
-/*   Updated: 2025/05/14 12:53:30 by nseon            ###   ########.fr       */
+/*   Updated: 2025/05/15 14:16:46 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <pthread.h>
+#include "fork.h"
 
 int	is_eating(t_args *infos)
 {
@@ -28,8 +29,8 @@ int	is_eating(t_args *infos)
 		print(*infos, "%ldms %d is eating\n");
 		if (philo_sleep(*infos, (*infos).tt_eat))
 			is_dead(*infos);
-		(*infos).forks[(*infos).number - 1].status = 0;
-		(*infos).forks[plus_one].status = 0;
+		release_fork(*infos, (*infos).number - 1);
+		release_fork(*infos, plus_one);
 		(*infos).will_die = get_time((*infos->time_minus))
 			+ (*infos).tt_die;
 		if ((*infos).eat_nb > 0)

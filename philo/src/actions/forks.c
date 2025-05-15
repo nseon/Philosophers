@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:06:27 by nseon             #+#    #+#             */
-/*   Updated: 2025/05/14 12:45:40 by nseon            ###   ########.fr       */
+/*   Updated: 2025/05/15 14:23:46 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,26 @@
 #include <stdio.h>
 #include "actions.h"
 #include <unistd.h>
+#include "mutex.h"
 
-int	set_fork(t_mutint **fork, int n)
+int	set_fork(t_args *infos, int n)
 {
 	int	i;
+	int	res;
 
 	i = -1;
-	*fork = malloc(n * sizeof(t_mutint));
+	(*infos).forks = malloc(n * sizeof(t_mutint));
 	if (!*fork)
 		return (-1);
 	while (++i < n)
 	{
-		pthread_mutex_init(&((*fork)[i]).mutex, NULL);
-		(*fork)[i].status = 0;
+		res = pthread_mutex_init(&(*infos).forks->mutex, NULL);
+		if (res)
+		{
+			destroy_mutexes_forks(*infos, i);
+			return (-1);
+		}
+		(*infos).forks[i].status = 0;
 	}
 	return (0);
 }
@@ -63,4 +70,11 @@ int	take_fork(t_args infos)
 	take_one_fork(infos, infos.number - 1);
 	take_one_fork(infos, plus_one);
 	return (1);
+}
+
+void release_fork(t_args infos, int index)
+{
+	pthread_mutex_lock(&infos.forks[index].mutex);
+	infos.forks[index].status = 0;
+	pthread_mutex_unlock(&infos.forks[index].mutex);
 }

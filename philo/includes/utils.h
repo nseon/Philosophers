@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 11:40:05 by nseon             #+#    #+#             */
-/*   Updated: 2025/04/16 10:26:02 by nseon            ###   ########.fr       */
+/*   Updated: 2025/05/15 14:17:29 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 # include <stdlib.h>
 
-void	*ft_memmove(void *dest, const void *src, size_t n);
-void	*ft_realloc(void *tab, int size, int resize);
-void	*ft_memcpy(void *dest, const void *src, size_t n);
 int		ft_atoi(const char *nptr);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s);

@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   infos.c                                            :+:      :+:    :+:   */
+/*   mutex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 16:15:32 by nseon             #+#    #+#             */
-/*   Updated: 2025/05/15 13:17:34 by nseon            ###   ########.fr       */
+/*   Created: 2025/05/15 13:32:31 by nseon             #+#    #+#             */
+/*   Updated: 2025/05/15 14:23:46 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
-#include "parsing.h"
-#include <pthread.h>
+#ifndef MUTEX_H
+# define MUTEX_H
 
-void	fill_args(int *args, int argc, char **argv)
-{
-	int	i;
+# include <parsing.h>
 
-	i = -1;
-	while (++i < argc)
-		*(args + i) = ft_atoi(argv[i]);
-	if (argc == 4)
-		*(args + i) = -1;
-}
+int		init_mutexes(t_args *infos);
+void	destroy_mutexes(t_args infos);
+void	destroy_mutexes_forks(t_args infos, int size);
+void	destroy_init_mutexes(t_args infos);
 
-int	duplicate_args(t_args **newargs, t_args args)
-{
-	int	i;
-
-	i = -1;
-	*newargs = malloc(sizeof(t_args));
-	if (!*newargs)
-		return (-1);
-	**newargs = args;
-	return (0);
-}
+#endif

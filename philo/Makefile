@@ -6,7 +6,7 @@
 #    By: nseon <nseon@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 10:00:18 by nseon             #+#    #+#              #
-#    Updated: 2025/05/14 13:05:50 by nseon            ###   ########.fr        #
+#    Updated: 2025/05/15 13:17:23 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ SRC			+=	$(addprefix $(PRS_DIR), $(PRS_SRC))
 PRS_DIR		=	parsing/
 PRS_SRC		=	check_args.c\
 				infos.c\
+				mutex.c\
 
 # -------------INCLUDES-------------- #
 

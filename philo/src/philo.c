@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:55:22 by nseon             #+#    #+#             */
-/*   Updated: 2025/05/13 13:52:20 by nseon            ###   ########.fr       */
+/*   Updated: 2025/05/15 14:23:41 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include <sys/time.h>
 #include "philo.h"
 #include <sys/time.h>
+#include "mutex.h"
+#include "fork.h"
 
 int	main(int argc, char **argv)
 {
@@ -36,14 +38,12 @@ int	main(int argc, char **argv)
 	if (verif_args(argc, argv) == -1)
 		return (1);
 	fill_args(&args.philo_nb, argc - 1, argv + 1);
-	init_end_start(&args);
-	if (set_fork(&args.forks, args.philo_nb) == -1)
+	if (init_mutexs(&args) == -1)
 		return (1);
+	if (set_fork(&args, args.philo_nb) == -1)
+		return (destroy_init_mutexes(args), 1);
 	if (create_ph(args.philo_nb, routine, args) == -1)
-	{
-		free(args.forks);
-		return (1);
-	}
-	free(args.forks);
-	return (0);
+		return (free(args.forks), 1);
+	destroy_mutexes(args);
+	return (free(args.forks), 0);
 }
