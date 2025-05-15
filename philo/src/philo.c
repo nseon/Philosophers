@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:55:22 by nseon             #+#    #+#             */
-/*   Updated: 2025/05/15 14:23:41 by nseon            ###   ########.fr       */
+/*   Updated: 2025/05/15 14:39:30 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int argc, char **argv)
 	if (verif_args(argc, argv) == -1)
 		return (1);
 	fill_args(&args.philo_nb, argc - 1, argv + 1);
-	if (init_mutexs(&args) == -1)
+	if (init_mutexes(&args) == -1)
 		return (1);
 	if (set_fork(&args, args.philo_nb) == -1)
 		return (destroy_init_mutexes(args), 1);

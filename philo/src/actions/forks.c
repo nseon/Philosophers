@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:06:27 by nseon             #+#    #+#             */
-/*   Updated: 2025/05/15 14:23:46 by nseon            ###   ########.fr       */
+/*   Updated: 2025/05/15 14:57:42 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,19 @@ int	set_fork(t_args *infos, int n)
 	int	res;
 
 	i = -1;
-	(*infos).forks = malloc(n * sizeof(t_mutint));
-	if (!*fork)
+	infos->forks = malloc(n * sizeof(t_mutint));
+	if (!infos->forks)
 		return (-1);
 	while (++i < n)
 	{
-		res = pthread_mutex_init(&(*infos).forks->mutex, NULL);
+		res = pthread_mutex_init(&infos->forks[i].mutex, NULL);
 		if (res)
 		{
 			destroy_mutexes_forks(*infos, i);
+			free(infos->forks);
 			return (-1);
 		}
-		(*infos).forks[i].status = 0;
+		infos->forks[i].status = 0;
 	}
 	return (0);
 }
