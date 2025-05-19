@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:06:27 by nseon             #+#    #+#             */
-/*   Updated: 2025/05/15 14:57:42 by nseon            ###   ########.fr       */
+/*   Updated: 2025/05/19 11:01:15 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	take_fork(t_args infos)
 	return (1);
 }
 
-void release_fork(t_args infos, int index)
+void	release_fork(t_args infos, int index)
 {
 	pthread_mutex_lock(&infos.forks[index].mutex);
 	infos.forks[index].status = 0;
